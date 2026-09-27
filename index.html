@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KolorHeaven | Premium Real Estate Photo & Media Editing Agency</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0284c7',
+                            600: '#026aa2',
+                            700: '#0369a1',
+                            accent: '#06b6d4',
+                            amber: '#f59e0b',
+                            emerald: '#10b981',
+                            darkBg: '#090d16',
+                            cardBg: '#111827',
+                            cardBorder: '#1f2937'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        heading: ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom CSS for Range Sliders & Smooth Animations -->
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #090d16;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f2937;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0284c7;
+        }
+
+        /* Gradient Text Utility */
+        .text-gradient {
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gradient-amber {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Glassmorphism Card Effect */
+        .glass-card {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-header {
+            background: rgba(9, 13, 22, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Before/After Image Comparison Slider Styles */
+        .ba-container {
+            position: relative;
+            overflow: hidden;
+            user-select: none;
+        }
+        .ba-before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 50%;
+            overflow: hidden;
+            z-index: 10;
+        }
+        .ba-before img {
+            max-width: none;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .ba-handle {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background: #38bdf8;
+            z-index: 20;
+            cursor: ew-resize;
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
+        }
+        .ba-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #38bdf8;
+            color: #090d16;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+        }
+    </style>
+</head>
+
+<body class="bg-[#090d16] text-slate-100 font-sans antialiased overflow-x-hidden selection:bg-sky-500 selection:text-white">
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-header transition-all duration-300" id="mainHeader">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 via-indigo-500 to-purple-500 p-[2px] shadow-lg shadow-sky-500/20 group-hover:shadow-sky-500/40 transition-all duration-300">
+                        <div class="w-full h-full bg-[#090d16] rounded-[10px] flex items-center justify-center">
+                            <i data-lucide="layers" class="w-5 h-5 text-sky-400 group-hover:rotate-12 transition-transform duration-300"></i>
+                        </div>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-heading font-extrabold text-xl tracking-tight text-white flex items-center gap-1">
+                            KOLOR<span class="text-sky-400">HEAVEN</span>
+                        </span>
+                        <span class="text-[10px] tracking-widest text-slate-400 uppercase font-medium">Real Estate Media Lab</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="#services" class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">Services</a>
+                    <a href="#comparison" class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">Before & After</a>
+                    <a href="#pricing" class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">Pricing Estimator</a>
+                    <a href="#how-it-works" class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">How It Works</a>
+                    <a href="#portfolio" class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">Portfolio</a>
+                    <a href="#testimonials" class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">Why Us</a>
+                    <a href="#contact" class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">Contact</a>
+                </nav>
+
+                <!-- Actions -->
+                <div class="hidden sm:flex items-center gap-4">
+                    <a href="#contact" class="text-xs font-semibold uppercase tracking-wider text-slate-300 hover:text-white px-3 py-2">
+                        Client Login
+                    </a>
+                    <button onclick="openModal('trialModal')" class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-semibold text-white rounded-xl group bg-gradient-to-br from-sky-400 via-indigo-500 to-purple-600 group-hover:from-sky-400 group-hover:to-purple-600 hover:shadow-lg hover:shadow-sky-500/25 transition-all">
+                        <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-[#090d16] rounded-[10px] group-hover:bg-opacity-0 flex items-center gap-2">
+                            <i data-lucide="sparkles" class="w-4 h-4 text-sky-400 group-hover:text-white"></i>
+                            Get Free Trial
+                        </span>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="lg:hidden p-2 text-slate-300 hover:text-white focus:outline-none">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Nav -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-[#0d1322] border-b border-slate-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#services" class="block text-base font-medium text-slate-300 hover:text-sky-400 py-1">Services</a>
+            <a href="#comparison" class="block text-base font-medium text-slate-300 hover:text-sky-400 py-1">Before & After</a>
+            <a href="#pricing" class="block text-base font-medium text-slate-300 hover:text-sky-400 py-1">Pricing Estimator</a>
+            <a href="#how-it-works" class="block text-base font-medium text-slate-300 hover:text-sky-400 py-1">How It Works</a>
+            <a href="#portfolio" class="block text-base font-medium text-slate-300 hover:text-sky-400 py-1">Portfolio</a>
+            <a href="#testimonials" class="block text-base font-medium text-slate-300 hover:text-sky-400 py-1">Why Us</a>
+            <a href="#contact" class="block text-base font-medium text-slate-300 hover:text-sky-400 py-1">Contact</a>
+            <div class="pt-2 flex flex-col gap-2">
+                <button onclick="openModal('trialModal')" class="w-full py-3 bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-semibold rounded-xl flex items-center justify-center gap-2">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i> Get Free Trial (3 Photos)
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
+        <!-- Background Ambient Glow -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-sky-600/15 blur-[140px] rounded-full pointer-events-none"></div>
+        <div class="absolute top-1/3 right-10 w-[400px] h-[400px] bg-purple-600/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-4xl mx-auto space-y-6">
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-sky-500/30 text-sky-300 text-xs sm:text-sm font-semibold tracking-wide shadow-inner shadow-sky-500/10">
+                    <span class="flex h-2 w-2 rounded-full bg-sky-400 animate-ping"></span>
+                    <span>#1 Trusted Real Estate Editing Agency in Vietnam</span>
+                    <i data-lucide="globe" class="w-4 h-4 text-sky-400"></i>
+                </div>
+
+                <!-- Headline -->
+                <h1 class="font-heading text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.15]">
+                    Elevate Your Real Estate Visuals. <br class="hidden sm:inline" />
+                    <span class="text-gradient">Sell Listings Faster.</span>
+                </h1>
+
+                <!-- Subtitle -->
+                <p class="text-slate-300 text-lg sm:text-xl font-normal max-w-2xl mx-auto leading-relaxed">
+                    High-end photo enhancement, Virtual Twilight, Virtual Staging, and Floor Plans delivered in under <strong class="text-sky-400 font-semibold">12 Hours</strong>. Serving US, European & Australian Real Estate Photographers and Brokers.
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <button onclick="openModal('trialModal')" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-600 hover:from-sky-400 hover:to-purple-500 text-white font-bold rounded-2xl shadow-xl shadow-sky-500/20 hover:shadow-sky-500/35 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-3 text-base">
+                        <i data-lucide="zap" class="w-5 h-5 fill-current"></i>
+                        Start Free Trial (3 Free HDRs)
+                    </button>
+
+                    <a href="#comparison" class="w-full sm:w-auto px-8 py-4 glass-card hover:bg-slate-800/80 text-slate-200 font-semibold rounded-2xl border border-slate-700 transition-all flex items-center justify-center gap-2 text-base">
+                        <i data-lucide="play-circle" class="w-5 h-5 text-sky-400"></i>
+                        Interactive Portfolio
+                    </a>
+                </div>
+
+                <!-- Features list bullet text -->
+                <div class="pt-6 flex flex-wrap items-center justify-center gap-6 text-xs sm:text-sm text-slate-400 font-medium">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i> No Credit Card Required
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i> Fast 12-Hour Turnaround
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i> Unlimited Revisions
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Bar Grid -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                <div class="glass-card rounded-2xl p-6 text-center border border-slate-800 hover:border-sky-500/30 transition-all">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-sky-400 font-heading">3.8M+</div>
+                    <div class="text-xs sm:text-sm text-slate-400 font-medium mt-1">Photos Enhanced</div>
+                </div>
+
+                <div class="glass-card rounded-2xl p-6 text-center border border-slate-800 hover:border-sky-500/30 transition-all">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-indigo-400 font-heading">12-Hour</div>
+                    <div class="text-xs sm:text-sm text-slate-400 font-medium mt-1">Express Turnaround</div>
+                </div>
+
+                <div class="glass-card rounded-2xl p-6 text-center border border-slate-800 hover:border-sky-500/30 transition-all">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-purple-400 font-heading">99.8%</div>
+                    <div class="text-xs sm:text-sm text-slate-400 font-medium mt-1">On-Time Delivery Rate</div>
+                </div>
+
+                <div class="glass-card rounded-2xl p-6 text-center border border-slate-800 hover:border-sky-500/30 transition-all">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-emerald-400 font-heading">24 / 7</div>
+                    <div class="text-xs sm:text-sm text-slate-400 font-medium mt-1">Live Global Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before / After Interactive Comparison Section -->
+    <section id="comparison" class="py-20 bg-[#0d1322] relative border-y border-slate-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-sky-400 mb-2">Unmatched Visual Perfection</h2>
+                <p class="font-heading text-3xl sm:text-5xl font-extrabold text-white">See The Magic: Before & After</p>
+                <p class="text-slate-400 mt-4 text-base">Drag the slider left and right to inspect the dramatic transformation performed by our master retouchers in Vietnam.</p>
+            </div>
+
+            <!-- Tabs to toggle categories -->
+            <div class="flex flex-wrap items-center justify-center gap-2 mb-10" id="comparisonTabs">
+                <button onclick="switchComparison('hdr')" class="comp-tab active-tab px-5 py-2.5 rounded-xl text-sm font-semibold transition-all bg-sky-500 text-white shadow-lg shadow-sky-500/20" data-type="hdr">
+                    HDR Enhancement
+                </button>
+                <button onclick="switchComparison('dusk')" class="comp-tab px-5 py-2.5 rounded-xl text-sm font-semibold transition-all bg-slate-800 text-slate-300 hover:bg-slate-700" data-type="dusk">
+                    Day to Dusk / Twilight
+                </button>
+                <button onclick="switchComparison('lawn')" class="comp-tab px-5 py-2.5 rounded-xl text-sm font-semibold transition-all bg-slate-800 text-slate-300 hover:bg-slate-700" data-type="lawn">
+                    Sky & Lawn Replacement
+                </button>
+                <button onclick="switchComparison('staging')" class="comp-tab px-5 py-2.5 rounded-xl text-sm font-semibold transition-all bg-slate-800 text-slate-300 hover:bg-slate-700" data-type="staging">
+                    Virtual Staging
+                </button>
+            </div>
+
+            <!-- Interactive Slider Container -->
+            <div class="max-w-5xl mx-auto glass-card p-3 sm:p-4 rounded-3xl shadow-2xl border border-slate-700">
+                <div class="ba-container aspect-[16/10] sm:aspect-[16/9] rounded-2xl overflow-hidden cursor-ew-resize" id="baSlider">
+                    <!-- After Image (Base) -->
+                    <img id="baAfterImg" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80" alt="After Edit" class="w-full h-full object-cover">
+                    
+                    <!-- Label After -->
+                    <span class="absolute top-4 right-4 bg-emerald-500/90 text-white font-bold text-xs uppercase px-3 py-1.5 rounded-lg shadow-md backdrop-blur-md z-10 pointer-events-none">
+                        Edited (KolorHeaven)
+                    </span>
+
+                    <!-- Before Image (Clipped overlay) -->
+                    <div class="ba-before" id="baBeforeDiv">
+                        <img id="baBeforeImg" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80" alt="Before Edit" class="object-cover filter contrast-75 brightness-75">
+                        <span class="absolute top-4 left-4 bg-rose-600/90 text-white font-bold text-xs uppercase px-3 py-1.5 rounded-lg shadow-md backdrop-blur-md pointer-events-none">
+                            Raw Original
+                        </span>
+                    </div>
+
+                    <!-- Slider Handle -->
+                    <div class="ba-handle" id="baHandle">
+                        <div class="ba-button">
+                            <i data-lucide="chevrons-left-right" class="w-5 h-5"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Info Box below slider -->
+                <div class="mt-4 px-4 py-3 bg-slate-900/80 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-300">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="check-circle" class="w-4 h-4 text-sky-400"></i>
+                        <span id="baDescription">Includes Flash-ambient blend, window view pull, color correction, and TV screen replacement.</span>
+                    </div>
+                    <div class="text-sky-400 font-semibold flex items-center gap-1 cursor-pointer" onclick="openModal('trialModal')">
+                        Test your photos for free <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Showcase -->
+    <section id="services" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-sky-400 mb-2">Complete Real Estate Media Solutions</h2>
+                <p class="font-heading text-3xl sm:text-5xl font-extrabold text-white">Our Editing Specializations</p>
+                <p class="text-slate-400 mt-4 text-base">From single residential shoots to luxury estates and commercial developments, we deliver precision retouches for every format.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="glass-card rounded-3xl p-8 border border-slate-800 hover:border-sky-500/50 transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400 mb-6 group-hover:scale-110 group-hover:bg-sky-500 group-hover:text-white transition-all">
+                        <i data-lucide="camera" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-white mb-3">HDR Photo Enhancement</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Seamless exposure blending, window pulls, color balance adjustments, perspective straightening, lens distortion fix, and crisp detail sharpening.
+                    </p>
+                    <ul class="space-y-2 text-xs text-slate-300 mb-6">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sky-400"></i> Window Pull & View Enhancement</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sky-400"></i> Fireplace & TV Screen Placement</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sky-400"></i> Lens Distortion Correct</li>
+                    </ul>
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+                        <span class="text-xs font-bold text-sky-400">From $0.80 / photo</span>
+                        <a href="#pricing" class="text-xs font-semibold text-slate-300 group-hover:text-sky-400 flex items-center gap-1">Calculate Cost <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="glass-card rounded-3xl p-8 border border-slate-800 hover:border-indigo-500/50 transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-6 group-hover:scale-110 group-hover:bg-indigo-500 group-hover:text-white transition-all">
+                        <i data-lucide="sunset" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-white mb-3">Day to Dusk Conversion</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Transform ordinary daytime photos into romantic, high-converting twilight scenes with warm interior lighting and golden-hour skies.
+                    </p>
+                    <ul class="space-y-2 text-xs text-slate-300 mb-6">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-indigo-400"></i> Custom Sky Replacement</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-indigo-400"></i> Exterior & Interior Light Glow</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-indigo-400"></i> Realistic Pool & Shadow Magic</li>
+                    </ul>
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+                        <span class="text-xs font-bold text-indigo-400">From $4.00 / photo</span>
+                        <a href="#pricing" class="text-xs font-semibold text-slate-300 group-hover:text-indigo-400 flex items-center gap-1">Calculate Cost <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="glass-card rounded-3xl p-8 border border-slate-800 hover:border-purple-500/50 transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-6 group-hover:scale-110 group-hover:bg-purple-500 group-hover:text-white transition-all">
+                        <i data-lucide="armchair" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-white mb-3">Virtual Staging & 3D Render</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Furnish empty properties with 3D designer furniture catalog items tailored to modern, Scandinavian, coastal, or luxury aesthetics.
+                    </p>
+                    <ul class="space-y-2 text-xs text-slate-300 mb-6">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-purple-400"></i> Declutter & Object Removal</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-purple-400"></i> Photorealistic 3D Furniture</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-purple-400"></i> Commercial & Residential Designs</li>
+                    </ul>
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+                        <span class="text-xs font-bold text-purple-400">From $15.00 / photo</span>
+                        <a href="#pricing" class="text-xs font-semibold text-slate-300 group-hover:text-purple-400 flex items-center gap-1">Calculate Cost <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="glass-card rounded-3xl p-8 border border-slate-800 hover:border-emerald-500/50 transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-6 group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-white transition-all">
+                        <i data-lucide="compass" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-white mb-3">Floor Plan Redrawing</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Convert hand sketches or rough builder plans into clean, branded 2D or textured 3D floor plans with exact room measurements.
+                    </p>
+                    <ul class="space-y-2 text-xs text-slate-300 mb-6">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> 2D Black & White / Color</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> 3D Textured Floor Plans</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Custom Logo Branding Included</li>
+                    </ul>
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+                        <span class="text-xs font-bold text-emerald-400">From $10.00 / plan</span>
+                        <a href="#pricing" class="text-xs font-semibold text-slate-300 group-hover:text-emerald-400 flex items-center gap-1">Calculate Cost <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="glass-card rounded-3xl p-8 border border-slate-800 hover:border-amber-500/50 transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 mb-6 group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-white transition-all">
+                        <i data-lucide="video" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-white mb-3">Real Estate Video Editing</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Dynamic walk-through video editing, drone footage enhancement, speed ramping, licensed music overlay, and agent branding.
+                    </p>
+                    <ul class="space-y-2 text-xs text-slate-300 mb-6">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> 4K Walkthrough & Reel Edits</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> Drone & Aerial Color Grading</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> Animated Text Callouts</li>
+                    </ul>
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+                        <span class="text-xs font-bold text-amber-400">Custom Quote</span>
+                        <a href="#pricing" class="text-xs font-semibold text-slate-300 group-hover:text-amber-400 flex items-center gap-1">Calculate Cost <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="glass-card rounded-3xl p-8 border border-slate-800 hover:border-cyan-500/50 transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 group-hover:bg-cyan-500 group-hover:text-white transition-all">
+                        <i data-lucide="eye" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-white mb-3">360° Virtual Tour Editing</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Tripod removal, panorama stitching, light balancing, and Matterport/3D tour cleanup for seamless online walk-throughs.
+                    </p>
+                    <ul class="space-y-2 text-xs text-slate-300 mb-6">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-400"></i> Tripod Patch & Nadir Cover</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-400"></i> 360 HDR Tone Mapping</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-400"></i> Hotspot Navigation Ready</li>
+                    </ul>
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+                        <span class="text-xs font-bold text-cyan-400">From $2.50 / pano</span>
+                        <a href="#pricing" class="text-xs font-semibold text-slate-300 group-hover:text-cyan-400 flex items-center gap-1">Calculate Cost <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Pricing Calculator Section -->
+    <section id="pricing" class="py-20 bg-[#0d1322] border-y border-slate-800/60 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-sky-400 mb-2">Transparent Volume Pricing</h2>
+                <p class="font-heading text-3xl sm:text-5xl font-extrabold text-white">Instant Quote & Estimator</p>
+                <p class="text-slate-400 mt-4 text-base">Select your quantities to estimate instant turnaround, total investment, and volume discounts.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Calculator Controls -->
+                <div class="lg:col-span-7 glass-card rounded-3xl p-6 sm:p-8 space-y-6 border border-slate-700">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                        <i data-lucide="sliders" class="w-5 h-5 text-sky-400"></i> Select Services & Quantities
+                    </h3>
+
+                    <!-- Service Item 1: HDR -->
+                    <div class="p-4 bg-slate-900/80 rounded-2xl space-y-3 border border-slate-800">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <div class="font-bold text-slate-100 text-sm">HDR Photo Enhancement</div>
+                                <div class="text-xs text-slate-400">$0.80 / photo</div>
+                            </div>
+                            <div class="text-right">
+                                <span class="font-bold text-sky-400 text-lg" id="hdrQtyVal">20</span> <span class="text-xs text-slate-400">photos</span>
+                            </div>
+                        </div>
+                        <input type="range" id="hdrSlider" min="0" max="100" value="20" class="w-full accent-sky-500 bg-slate-800 h-2 rounded-lg cursor-pointer">
+                    </div>
+
+                    <!-- Service Item 2: Day to Dusk -->
+                    <div class="p-4 bg-slate-900/80 rounded-2xl space-y-3 border border-slate-800">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <div class="font-bold text-slate-100 text-sm">Day to Dusk Conversion</div>
+                                <div class="text-xs text-slate-400">$4.00 / photo</div>
+                            </div>
+                            <div class="text-right">
+                                <span class="font-bold text-indigo-400 text-lg" id="duskQtyVal">2</span> <span class="text-xs text-slate-400">photos</span>
+                            </div>
+                        </div>
+                        <input type="range" id="duskSlider" min="0" max="25" value="2" class="w-full accent-indigo-500 bg-slate-800 h-2 rounded-lg cursor-pointer">
+                    </div>
+
+                    <!-- Service Item 3: Virtual Staging -->
+                    <div class="p-4 bg-slate-900/80 rounded-2xl space-y-3 border border-slate-800">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <div class="font-bold text-slate-100 text-sm">Virtual Staging</div>
+                                <div class="text-xs text-slate-400">$15.00 / photo</div>
+                            </div>
+                            <div class="text-right">
+                                <span class="font-bold text-purple-400 text-lg" id="stagingQtyVal">0</span> <span class="text-xs text-slate-400">photos</span>
+                            </div>
+                        </div>
+                        <input type="range" id="stagingSlider" min="0" max="20" value="0" class="w-full accent-purple-500 bg-slate-800 h-2 rounded-lg cursor-pointer">
+                    </div>
+
+                    <!-- Service Item 4: Floor Plan -->
+                    <div class="p-4 bg-slate-900/80 rounded-2xl space-y-3 border border-slate-800">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <div class="font-bold text-slate-100 text-sm">2D / 3D Floor Plan</div>
+                                <div class="text-xs text-slate-400">$10.00 / plan</div>
+                            </div>
+                            <div class="text-right">
+                                <span class="font-bold text-emerald-400 text-lg" id="floorQtyVal">1</span> <span class="text-xs text-slate-400">plan</span>
+                            </div>
+                        </div>
+                        <input type="range" id="floorSlider" min="0" max="10" value="1" class="w-full accent-emerald-500 bg-slate-800 h-2 rounded-lg cursor-pointer">
+                    </div>
+                </div>
+
+                <!-- Summary Card -->
+                <div class="lg:col-span-5 glass-card rounded-3xl p-6 sm:p-8 border border-sky-500/30 shadow-xl relative overflow-hidden">
+                    <div class="absolute -top-12 -right-12 w-32 h-32 bg-sky-500/10 rounded-full blur-2xl"></div>
+
+                    <h3 class="text-xl font-bold text-white mb-6 border-b border-slate-800 pb-4">Estimated Summary</h3>
+
+                    <div class="space-y-4 text-sm">
+                        <div class="flex justify-between text-slate-300">
+                            <span>HDR Photos (<span id="summaryHdrQty">20</span>):</span>
+                            <span class="font-semibold text-white" id="summaryHdrCost">$16.00</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span>Day to Dusk (<span id="summaryDuskQty">2</span>):</span>
+                            <span class="font-semibold text-white" id="summaryDuskCost">$8.00</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span>Virtual Staging (<span id="summaryStagingQty">0</span>):</span>
+                            <span class="font-semibold text-white" id="summaryStagingCost">$0.00</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span>Floor Plans (<span id="summaryFloorQty">1</span>):</span>
+                            <span class="font-semibold text-white" id="summaryFloorCost">$10.00</span>
+                        </div>
+
+                        <div class="pt-3 border-t border-slate-800 flex justify-between text-xs text-emerald-400 font-semibold" id="discountRow">
+                            <span>Volume Discount applied:</span>
+                            <span id="discountVal">-$0.00</span>
+                        </div>
+
+                        <div class="pt-4 border-t border-slate-700 flex justify-between items-baseline">
+                            <span class="text-base font-bold text-white">Estimated Total:</span>
+                            <div class="text-right">
+                                <span class="text-3xl font-extrabold text-sky-400 font-heading" id="totalPrice">$34.00</span>
+                                <span class="block text-[10px] text-slate-400">USD (No hidden fees)</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-900/90 p-4 rounded-xl space-y-2 border border-slate-800">
+                            <div class="flex items-center gap-2 text-xs text-slate-300">
+                                <i data-lucide="clock" class="w-4 h-4 text-sky-400"></i>
+                                <span>Est. Delivery: <strong class="text-white" id="estTime">Within 12 Hours</strong></span>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs text-slate-300">
+                                <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+                                <span>Includes Free Unlimited Revisions</span>
+                            </div>
+                        </div>
+
+                        <button onclick="openModal('orderModal')" class="w-full py-4 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-bold rounded-xl shadow-lg shadow-sky-500/25 transition-all text-center flex items-center justify-center gap-2 text-base">
+                            <i data-lucide="shopping-cart" class="w-5 h-5"></i> Place Order Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-sky-400 mb-2">Seamless Workflow</h2>
+                <p class="font-heading text-3xl sm:text-5xl font-extrabold text-white">How KolorHeaven Works</p>
+                <p class="text-slate-400 mt-4 text-base">Send us your raw files before leaving the studio, and wake up to market-ready visuals.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+                <!-- Connecting line for desktop -->
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gradient-to-r from-sky-500/20 via-indigo-500/40 to-purple-500/20 -translate-y-8 pointer-events-none"></div>
+
+                <!-- Step 1 -->
+                <div class="glass-card rounded-3xl p-6 text-center border border-slate-800 relative z-10 hover:border-sky-500/40 transition-all">
+                    <div class="w-16 h-16 rounded-2xl bg-sky-500 text-white font-extrabold text-xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-sky-500/30">
+                        01
+                    </div>
+                    <h3 class="font-heading text-lg font-bold text-white mb-2">Upload Files</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed">
+                        Share your raw brackets or files via Dropbox, Google Drive, WeTransfer, or directly in our portal.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="glass-card rounded-3xl p-6 text-center border border-slate-800 relative z-10 hover:border-indigo-500/40 transition-all">
+                    <div class="w-16 h-16 rounded-2xl bg-indigo-500 text-white font-extrabold text-xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-indigo-500/30">
+                        02
+                    </div>
+                    <h3 class="font-heading text-lg font-bold text-white mb-2">Editing & QA</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed">
+                        Our specialized editors transform your images. Every file undergoes 2-stage Quality Control.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="glass-card rounded-3xl p-6 text-center border border-slate-800 relative z-10 hover:border-purple-500/40 transition-all">
+                    <div class="w-16 h-16 rounded-2xl bg-purple-500 text-white font-extrabold text-xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-purple-500/30">
+                        03
+                    </div>
+                    <h3 class="font-heading text-lg font-bold text-white mb-2">12h Fast Delivery</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed">
+                        Receive high-res MLS compliant images delivered directly back to your inbox or cloud storage.
+                    </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="glass-card rounded-3xl p-6 text-center border border-slate-800 relative z-10 hover:border-emerald-500/40 transition-all">
+                    <div class="w-16 h-16 rounded-2xl bg-emerald-500 text-white font-extrabold text-xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-emerald-500/30">
+                        04
+                    </div>
+                    <h3 class="font-heading text-lg font-bold text-white mb-2">Easy Revisions</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed">
+                        Need slight tweaks? Enjoy free, quick modifications until you are 100% satisfied.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filterable Portfolio Gallery -->
+    <section id="portfolio" class="py-24 bg-[#0d1322] border-t border-slate-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <h2 class="text-xs font-bold uppercase tracking-widest text-sky-400 mb-2">Our Recent Work</h2>
+                    <p class="font-heading text-3xl sm:text-5xl font-extrabold text-white">Global Client Showcase</p>
+                </div>
+
+                <!-- Filters -->
+                <div class="flex flex-wrap gap-2" id="portfolioFilter">
+                    <button onclick="filterPortfolio('all')" class="port-btn px-4 py-2 rounded-xl text-xs font-semibold bg-sky-500 text-white" data-filter="all">All Work</button>
+                    <button onclick="filterPortfolio('hdr')" class="port-btn px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700" data-filter="hdr">HDR Interiors</button>
+                    <button onclick="filterPortfolio('dusk')" class="port-btn px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700" data-filter="dusk">Twilight</button>
+                    <button onclick="filterPortfolio('staging')" class="port-btn px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700" data-filter="staging">Staging</button>
+                    <button onclick="filterPortfolio('floor')" class="port-btn px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700" data-filter="floor">Floor Plans</button>
+                </div>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolioGrid">
+                <!-- Item 1 -->
+                <div class="port-item hdr glass-card rounded-2xl overflow-hidden border border-slate-800 group cursor-pointer" onclick="openLightBox('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80', 'Modern Luxury Living Room')">
+                    <div class="relative aspect-[4/3] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Interior HDR">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                            <div>
+                                <span class="text-[10px] font-bold text-sky-400 uppercase tracking-widest">HDR Interior</span>
+                                <h4 class="text-white font-bold text-base">Modern Villa Living Room</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="port-item dusk glass-card rounded-2xl overflow-hidden border border-slate-800 group cursor-pointer" onclick="openLightBox('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80', 'Virtual Twilight Estate')">
+                    <div class="relative aspect-[4/3] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Day to dusk">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                            <div>
+                                <span class="text-[10px] font-bold text-indigo-400 uppercase tracking-widest">Day to Dusk</span>
+                                <h4 class="text-white font-bold text-base">Luxury Waterfront Estate</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="port-item staging glass-card rounded-2xl overflow-hidden border border-slate-800 group cursor-pointer" onclick="openLightBox('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=80', 'Scandinavian Virtual Staging')">
+                    <div class="relative aspect-[4/3] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Virtual Staging">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                            <div>
+                                <span class="text-[10px] font-bold text-purple-400 uppercase tracking-widest">Virtual Staging</span>
+                                <h4 class="text-white font-bold text-base">Scandinavian Bedroom Suite</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="port-item hdr glass-card rounded-2xl overflow-hidden border border-slate-800 group cursor-pointer" onclick="openLightBox('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80', 'Chef Gourmet Kitchen')">
+                    <div class="relative aspect-[4/3] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Kitchen HDR">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                            <div>
+                                <span class="text-[10px] font-bold text-sky-400 uppercase tracking-widest">HDR Interior</span>
+                                <h4 class="text-white font-bold text-base">Gourmet Chef Kitchen</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="port-item dusk glass-card rounded-2xl overflow-hidden border border-slate-800 group cursor-pointer" onclick="openLightBox('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80', 'Suburban House Twilight')">
+                    <div class="relative aspect-[4/3] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Twilight House">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                            <div>
+                                <span class="text-[10px] font-bold text-indigo-400 uppercase tracking-widest">Day to Dusk</span>
+                                <h4 class="text-white font-bold text-base">Suburban Family Home</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="port-item floor glass-card rounded-2xl overflow-hidden border border-slate-800 group cursor-pointer" onclick="openLightBox('https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1600&q=80', '3D Architectural Floor Plan')">
+                    <div class="relative aspect-[4/3] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Floor Plan">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                            <div>
+                                <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest">Floor Plan</span>
+                                <h4 class="text-white font-bold text-base">Custom 3D Layout Plan</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials & Client Endorsement Section -->
+    <section id="testimonials" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-sky-400 mb-2">Trusted Worldwide</h2>
+                <p class="font-heading text-3xl sm:text-5xl font-extrabold text-white">What Our Clients Say</p>
+                <p class="text-slate-400 mt-4 text-base">Hear from top-tier photographers and real estate agencies in California, London, Sydney, and Munich.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="glass-card rounded-3xl p-8 border border-slate-800 relative flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-amber-400 mb-4">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed italic mb-6">
+                            "KolorHeaven has been our secret weapon for 2 years. Their 12-hour overnight delivery means I send bracketed RAW files after a evening shoot in Los Angeles and have polished photos before breakfast!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-4 border-t border-slate-800">
+                        <div class="w-10 h-10 rounded-full bg-sky-500/20 text-sky-400 font-bold flex items-center justify-center">
+                            JS
+                        </div>
+                        <div>
+                            <div class="text-white font-bold text-sm">Jason Sterling</div>
+                            <div class="text-slate-400 text-xs">Real Estate Media Co., Los Angeles USA</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="glass-card rounded-3xl p-8 border border-slate-800 relative flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-amber-400 mb-4">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed italic mb-6">
+                            "The Virtual Dusk conversions are stunningly realistic. Properties that sat on the market for weeks got multiple offers right after we updated the main photo to KolorHeaven’s twilight edit."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-4 border-t border-slate-800">
+                        <div class="w-10 h-10 rounded-full bg-indigo-500/20 text-indigo-400 font-bold flex items-center justify-center">
+                            EM
+                        </div>
+                        <div>
+                            <div class="text-white font-bold text-sm">Emma Miller</div>
+                            <div class="text-slate-400 text-xs">Premier Listing Group, Sydney AU</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="glass-card rounded-3xl p-8 border border-slate-800 relative flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-amber-400 mb-4">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed italic mb-6">
+                            "Flawless window pulls and natural grass replacement. Their dedicated account manager communicates effortlessly. Truly the most reliable editing team in Vietnam!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-4 border-t border-slate-800">
+                        <div class="w-10 h-10 rounded-full bg-purple-500/20 text-purple-400 font-bold flex items-center justify-center">
+                            DL
+                        </div>
+                        <div>
+                            <div class="text-white font-bold text-sm">David Laurent</div>
+                            <div class="text-slate-400 text-xs">Avenue Real Estate, London UK</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-[#0d1322] border-t border-slate-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Info -->
+                <div class="lg:col-span-5 space-y-6">
+                    <h2 class="text-xs font-bold uppercase tracking-widest text-sky-400">Get In Touch</h2>
+                    <p class="font-heading text-3xl sm:text-5xl font-extrabold text-white">Let’s Transform Your Visuals</p>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Have custom volume inquiries, API integration requirements, or need dedicated editors assigned to your agency? Contact our Hanoi headquarters today.
+                    </p>
+
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-sky-500/10 rounded-xl text-sky-400">
+                                <i data-lucide="map-pin" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Headquarters (Vietnam)</h4>
+                                <p class="text-slate-400 text-xs">Cau Giay District, Hanoi, Vietnam</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-sky-500/10 rounded-xl text-sky-400">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Email Inquiries</h4>
+                                <p class="text-slate-400 text-xs">contact@kolorheaven.com / support@kolorheaven.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-sky-500/10 rounded-xl text-sky-400">
+                                <i data-lucide="phone" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">24/7 Hotline & WhatsApp</h4>
+                                <p class="text-slate-400 text-xs">+84 987 654 321 (Global Operations)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Form -->
+                <div class="lg:col-span-7 glass-card p-8 rounded-3xl border border-slate-700">
+                    <form onsubmit="handleContactSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Your Name</label>
+                                <input type="text" required placeholder="John Doe" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-sky-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Email Address</label>
+                                <input type="email" required placeholder="john@agency.com" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-sky-500">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Company / Studio</label>
+                                <input type="text" placeholder="Apex Real Estate Media" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-sky-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Estimated Monthly Volume</label>
+                                <select class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-sky-500">
+                                    <option>1 - 100 photos / month</option>
+                                    <option>100 - 500 photos / month</option>
+                                    <option>500 - 2,000 photos / month</option>
+                                    <option>2,000+ photos / month</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Message or Special Guidelines</label>
+                            <textarea rows="4" placeholder="Tell us about your editing style, preferred presets, or specific project needs..." class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-sky-500"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-bold rounded-xl shadow-lg shadow-sky-500/20 transition-all text-sm flex items-center justify-center gap-2">
+                            <i data-lucide="send" class="w-4 h-4"></i> Send Inquiry
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#060911] border-t border-slate-800/80 py-12 text-xs text-slate-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div class="space-y-4 md:col-span-1">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="layers" class="w-6 h-6 text-sky-400"></i>
+                        <span class="font-heading font-extrabold text-lg text-white">KOLOR<span class="text-sky-400">HEAVEN</span></span>
+                    </div>
+                    <p class="text-slate-400 text-xs leading-relaxed">
+                        Premium Real Estate Photo Editing & Media Post-Production Agency. Empowering photographers globally with fast 12h turnaround.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-3">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#services" class="hover:text-sky-400 transition-colors">Services Overview</a></li>
+                        <li><a href="#comparison" class="hover:text-sky-400 transition-colors">Before & After Examples</a></li>
+                        <li><a href="#pricing" class="hover:text-sky-400 transition-colors">Pricing Estimator</a></li>
+                        <li><a href="#portfolio" class="hover:text-sky-400 transition-colors">Recent Works</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-3">Core Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#services" class="hover:text-sky-400 transition-colors">HDR Image Blending</a></li>
+                        <li><a href="#services" class="hover:text-sky-400 transition-colors">Day to Dusk Twilight</a></li>
+                        <li><a href="#services" class="hover:text-sky-400 transition-colors">Virtual Staging 3D</a></li>
+                        <li><a href="#services" class="hover:text-sky-400 transition-colors">2D/3D Floor Plans</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-3">Legal & Guarantee</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-sky-400 transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-sky-400 transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-sky-400 transition-colors">100% Satisfaction Guarantee</a></li>
+                        <li><a href="#" class="hover:text-sky-400 transition-colors">MLS Compliance Rules</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div>© 2026 KolorHeaven Media Co., Ltd. All rights reserved.</div>
+                <div class="flex items-center gap-4 text-slate-400">
+                    <a href="#" class="hover:text-sky-400"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+                    <a href="#" class="hover:text-sky-400"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                    <a href="#" class="hover:text-sky-400"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Free Trial Modal -->
+    <div id="trialModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-card max-w-xl w-full rounded-3xl p-6 sm:p-8 border border-slate-700 relative shadow-2xl animate-in fade-in zoom-in duration-200">
+            <button onclick="closeModal('trialModal')" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <span class="inline-block p-3 bg-sky-500/10 rounded-2xl text-sky-400 mb-2">
+                    <i data-lucide="gift" class="w-6 h-6"></i>
+                </span>
+                <h3 class="font-heading text-2xl font-bold text-white">Claim Your Free Trial Combo</h3>
+                <p class="text-slate-400 text-xs mt-1">Get 3 Free HDR Edits + 1 Free Day to Dusk Edit. No credit card required!</p>
+            </div>
+
+            <form onsubmit="handleTrialSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Full Name</label>
+                    <input type="text" required placeholder="Alex Rivera" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-sky-500">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Business Email</label>
+                    <input type="email" required placeholder="alex@riveramedia.com" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-sky-500">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Dropbox / Google Drive Link for Demo Photos</label>
+                    <input type="url" placeholder="https://www.dropbox.com/sh/example..." class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-sky-500">
+                </div>
+
+                <!-- Simulated Drag & Drop box -->
+                <div class="border-2 border-dashed border-slate-700 rounded-xl p-4 text-center cursor-pointer hover:border-sky-500 transition-colors bg-slate-900/50">
+                    <i data-lucide="upload-cloud" class="w-8 h-8 text-sky-400 mx-auto mb-1"></i>
+                    <p class="text-xs text-slate-300 font-semibold">Or Drag & Drop RAW Brackets Here</p>
+                    <p class="text-[10px] text-slate-500 mt-0.5">Supports .CR2, .NEF, .ARW, .DNG, .ZIP (Up to 500MB)</p>
+                </div>
+
+                <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-bold rounded-xl shadow-lg shadow-sky-500/25 transition-all text-sm">
+                    Submit Free Trial Request
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Order Modal -->
+    <div id="orderModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-card max-w-xl w-full rounded-3xl p-6 sm:p-8 border border-slate-700 relative shadow-2xl">
+            <button onclick="closeModal('orderModal')" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <h3 class="font-heading text-2xl font-bold text-white">Complete Your Order</h3>
+                <p class="text-slate-400 text-xs mt-1">Pre-filled with your customized price calculation</p>
+            </div>
+
+            <form onsubmit="handleOrderSubmit(event)" class="space-y-4">
+                <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 flex justify-between items-center text-xs">
+                    <span class="text-slate-400">Total Calculated Investment:</span>
+                    <span class="text-sky-400 font-extrabold text-base" id="modalOrderTotal">$34.00</span>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Your Name</label>
+                    <input type="text" required placeholder="John Smith" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-sky-500">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Email Address</label>
+                    <input type="email" required placeholder="john@smithmedia.com" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-sky-500">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Raw File Download URL (Dropbox / Wetransfer)</label>
+                    <input type="url" required placeholder="https://wetransfer.com/downloads/..." class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-sky-500">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Special Instructions / Sky Preference</label>
+                    <textarea rows="3" placeholder="e.g. Warm sunset for twilight photo, add blue sky for outdoor shot..." class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-sky-500"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-bold rounded-xl shadow-lg shadow-emerald-500/25 transition-all text-sm">
+                    Confirm Order & Begin Processing
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal for Portfolio -->
+    <div id="lightboxModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/90 backdrop-blur-lg">
+        <button onclick="closeModal('lightboxModal')" class="absolute top-6 right-6 text-white bg-slate-800 p-3 rounded-full hover:bg-slate-700 transition-colors">
+            <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+        <div class="max-w-4xl w-full text-center space-y-4">
+            <img id="lightboxImg" src="" alt="Enlarged Portfolio" class="max-h-[80vh] mx-auto rounded-2xl shadow-2xl border border-slate-800">
+            <h4 id="lightboxTitle" class="text-white font-bold text-lg font-heading"></h4>
+        </div>
+    </div>
+
+    <!-- Floating Live Chat Widget -->
+    <div class="fixed bottom-6 right-6 z-40">
+        <!-- Chat window -->
+        <div id="chatWindow" class="hidden glass-card w-80 sm:w-96 rounded-3xl border border-slate-700 shadow-2xl overflow-hidden mb-4 animate-in slide-in-from-bottom-5 duration-300">
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-sky-600 to-indigo-600 p-4 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <div class="w-9 h-9 rounded-full bg-white text-sky-600 font-bold flex items-center justify-center text-sm">
+                            KH
+                        </div>
+                        <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-400 rounded-full border-2 border-slate-900"></span>
+                    </div>
+                    <div>
+                        <div class="text-white font-bold text-sm">KolorHeaven Live Assistant</div>
+                        <div class="text-[10px] text-sky-100">Typically replies in < 1 minute</div>
+                    </div>
+                </div>
+                <button onclick="toggleChat()" class="text-white hover:text-slate-200">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Messages area -->
+            <div id="chatMessages" class="p-4 h-64 overflow-y-auto space-y-3 text-xs bg-slate-950/80">
+                <div class="bg-slate-800 text-slate-200 p-3 rounded-2xl rounded-tl-none max-w-[85%] border border-slate-700">
+                    Hello! 👋 Welcome to KolorHeaven Vietnam. How can we assist with your real estate photo editing today?
+                </div>
+            </div>
+
+            <!-- Input area -->
+            <form onsubmit="sendChatMessage(event)" class="p-3 bg-slate-900 border-t border-slate-800 flex items-center gap-2">
+                <input type="text" id="chatInput" placeholder="Type your message..." class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-sky-500">
+                <button type="submit" class="p-2 bg-sky-500 text-white rounded-xl hover:bg-sky-400 transition-colors">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                </button>
+            </form>
+        </div>
+
+        <!-- Chat Trigger Button -->
+        <button onclick="toggleChat()" class="w-14 h-14 bg-gradient-to-r from-sky-500 to-indigo-600 text-white rounded-full flex items-center justify-center shadow-xl shadow-sky-500/30 hover:scale-105 transition-transform">
+            <i data-lucide="message-square" class="w-6 h-6"></i>
+        </button>
+    </div>
+
+    <!-- Notification Toast Container -->
+    <div id="toast" class="fixed top-24 right-6 z-50 hidden glass-card px-5 py-3 rounded-2xl border border-emerald-500/50 text-emerald-400 text-xs font-semibold shadow-xl flex items-center gap-2">
+        <i data-lucide="check-circle" class="w-4 h-4"></i>
+        <span id="toastMsg">Action completed successfully!</span>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Modal Management
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+        }
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+
+        // Notification Toast
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').innerText = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 4000);
+        }
+
+        // Before / After Slider Drag Logic
+        const baSlider = document.getElementById('baSlider');
+        const baBeforeDiv = document.getElementById('baBeforeDiv');
+        const baHandle = document.getElementById('baHandle');
+        let isDragging = false;
+
+        function setSliderPosition(x) {
+            const rect = baSlider.getBoundingClientRect();
+            let position = ((x - rect.left) / rect.width) * 100;
+            if (position < 0) position = 0;
+            if (position > 100) position = 100;
+
+            baBeforeDiv.style.width = position + '%';
+            baHandle.style.left = position + '%';
+        }
+
+        baSlider.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            setSliderPosition(e.clientX);
+        });
+
+        window.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            setSliderPosition(e.clientX);
+        });
+
+        // Touch support for Before/After Slider
+        baSlider.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            setSliderPosition(e.touches[0].clientX);
+        });
+        window.addEventListener('touchend', () => {
+            isDragging = false;
+        });
+        window.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            setSliderPosition(e.touches[0].clientX);
+        });
+
+        // Comparison Data Switcher
+        const compData = {
+            hdr: {
+                before: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80',
+                after: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80',
+                desc: 'HDR Photo Enhancement: Bright ambient lighting, crisp window view pull, color correction, and TV screen placement.'
+            },
+            dusk: {
+                before: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80',
+                after: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80',
+                desc: 'Day to Dusk Twilight: Dramatic sunset sky replacement, warm interior & exterior light turn-on, pool reflection enrichment.'
+            },
+            lawn: {
+                before: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1600&q=80',
+                after: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80',
+                desc: 'Lawn & Sky Replacement: Patchy dead grass transformed to lush emerald lawn; overcast sky replaced with vibrant blue clouds.'
+            },
+            staging: {
+                before: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=80',
+                after: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=80',
+                desc: 'Virtual Staging: Empty room furnished with photorealistic 3D Scandinavian furniture, rug, lighting, and wall art.'
+            }
+        };
+
+        function switchComparison(type) {
+            const tabs = document.querySelectorAll('#comparisonTabs button');
+            tabs.forEach(tab => {
+                if (tab.getAttribute('data-type') === type) {
+                    tab.className = 'comp-tab active-tab px-5 py-2.5 rounded-xl text-sm font-semibold transition-all bg-sky-500 text-white shadow-lg shadow-sky-500/20';
+                } else {
+                    tab.className = 'comp-tab px-5 py-2.5 rounded-xl text-sm font-semibold transition-all bg-slate-800 text-slate-300 hover:bg-slate-700';
+                }
+            });
+
+            document.getElementById('baBeforeImg').src = compData[type].before;
+            document.getElementById('baAfterImg').src = compData[type].after;
+            document.getElementById('baDescription').innerText = compData[type].desc;
+
+            // Reset handle to center
+            baBeforeDiv.style.width = '50%';
+            baHandle.style.left = '50%';
+        }
+
+        // Pricing Calculator Logic
+        const hdrSlider = document.getElementById('hdrSlider');
+        const duskSlider = document.getElementById('duskSlider');
+        const stagingSlider = document.getElementById('stagingSlider');
+        const floorSlider = document.getElementById('floorSlider');
+
+        function updatePricing() {
+            const hdrQty = parseInt(hdrSlider.value);
+            const duskQty = parseInt(duskSlider.value);
+            const stagingQty = parseInt(stagingSlider.value);
+            const floorQty = parseInt(floorSlider.value);
+
+            document.getElementById('hdrQtyVal').innerText = hdrQty;
+            document.getElementById('duskQtyVal').innerText = duskQty;
+            document.getElementById('stagingQtyVal').innerText = stagingQty;
+            document.getElementById('floorQtyVal').innerText = floorQty;
+
+            document.getElementById('summaryHdrQty').innerText = hdrQty;
+            document.getElementById('summaryDuskQty').innerText = duskQty;
+            document.getElementById('summaryStagingQty').innerText = stagingQty;
+            document.getElementById('summaryFloorQty').innerText = floorQty;
+
+            const hdrCost = hdrQty * 0.80;
+            const duskCost = duskQty * 4.00;
+            const stagingCost = stagingQty * 15.00;
+            const floorCost = floorQty * 10.00;
+
+            document.getElementById('summaryHdrCost').innerText = '$' + hdrCost.toFixed(2);
+            document.getElementById('summaryDuskCost').innerText = '$' + duskCost.toFixed(2);
+            document.getElementById('summaryStagingCost').innerText = '$' + stagingCost.toFixed(2);
+            document.getElementById('summaryFloorCost').innerText = '$' + floorCost.toFixed(2);
+
+            let subtotal = hdrCost + duskCost + stagingCost + floorCost;
+            let discount = 0;
+
+            // Volume discount rules
+            if (subtotal > 100) {
+                discount = subtotal * 0.15; // 15% discount
+            } else if (subtotal > 50) {
+                discount = subtotal * 0.10; // 10% discount
+            }
+
+            const total = subtotal - discount;
+
+            document.getElementById('discountVal').innerText = '-$' + discount.toFixed(2);
+            document.getElementById('totalPrice').innerText = '$' + total.toFixed(2);
+            document.getElementById('modalOrderTotal').innerText = '$' + total.toFixed(2);
+
+            // Turnaround estimation logic
+            const totalItems = hdrQty + duskQty + stagingQty + floorQty;
+            if (totalItems > 80) {
+                document.getElementById('estTime').innerText = 'Within 18-24 Hours';
+            } else {
+                document.getElementById('estTime').innerText = 'Within 12 Hours';
+            }
+        }
+
+        [hdrSlider, duskSlider, stagingSlider, floorSlider].forEach(slider => {
+            slider.addEventListener('input', updatePricing);
+        });
+
+        // Initialize Pricing Calculation
+        updatePricing();
+
+        // Portfolio Filtering
+        function filterPortfolio(category) {
+            const buttons = document.querySelectorAll('#portfolioFilter button');
+            buttons.forEach(btn => {
+                if (btn.getAttribute('data-filter') === category) {
+                    btn.className = 'port-btn px-4 py-2 rounded-xl text-xs font-semibold bg-sky-500 text-white';
+                } else {
+                    btn.className = 'port-btn px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700';
+                }
+            });
+
+            const items = document.querySelectorAll('.port-item');
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Lightbox Modal
+        function openLightBox(src, title) {
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightboxTitle').innerText = title;
+            openModal('lightboxModal');
+        }
+
+        // Form Handlers
+        function handleTrialSubmit(e) {
+            e.preventDefault();
+            closeModal('trialModal');
+            showToast('Free Trial submitted! Our team will process your 3 HDRs within 12h.');
+        }
+
+        function handleOrderSubmit(e) {
+            e.preventDefault();
+            closeModal('orderModal');
+            showToast('Order confirmed! Check your email for file confirmation.');
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            showToast('Inquiry sent! Our Hanoi team will get back to you shortly.');
+            e.target.reset();
+        }
+
+        // Live Chat simulation
+        function toggleChat() {
+            const chatWin = document.getElementById('chatWindow');
+            chatWin.classList.toggle('hidden');
+        }
+
+        function sendChatMessage(e) {
+            e.preventDefault();
+            const input = document.getElementById('chatInput');
+            const msg = input.value.trim();
+            if (!msg) return;
+
+            const chatMessages = document.getElementById('chatMessages');
+
+            // User Message
+            const userMsgDiv = document.createElement('div');
+            userMsgDiv.className = 'bg-sky-600 text-white p-3 rounded-2xl rounded-tr-none max-w-[85%] ml-auto text-xs';
+            userMsgDiv.innerText = msg;
+            chatMessages.appendChild(userMsgDiv);
+
+            input.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // Automated Agent Reply delay
+            setTimeout(() => {
+                const agentMsgDiv = document.createElement('div');
+                agentMsgDiv.className = 'bg-slate-800 text-slate-200 p-3 rounded-2xl rounded-tl-none max-w-[85%] border border-slate-700 text-xs';
+                
+                if (msg.toLowerCase().includes('price') || msg.toLowerCase().includes('cost')) {
+                    agentMsgDiv.innerText = 'Our standard HDR editing starts at only $0.80/photo, and Day to Dusk is $4.00/photo! You can calculate exact quotes using our online Pricing Estimator.';
+                } else if (msg.toLowerCase().includes('trial') || msg.toLowerCase().includes('free')) {
+                    agentMsgDiv.innerText = 'You can claim 3 free HDR edits + 1 free Day to Dusk edit! Just click the "Get Free Trial" button in the top menu bar.';
+                } else {
+                    agentMsgDiv.innerText = 'Thanks for reaching out! A dedicated account manager from our Hanoi team has received your message and will reply in under 2 minutes.';
+                }
+
+                chatMessages.appendChild(agentMsgDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
